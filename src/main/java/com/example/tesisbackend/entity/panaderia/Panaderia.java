@@ -20,7 +20,7 @@ public class Panaderia {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "id_sede")  // FK
+    @JoinColumn(name = "id_sede")
     private Sede sede;
 
 }

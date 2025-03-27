@@ -16,7 +16,7 @@ public class Canton {
     private String nombre;
 
     @ManyToOne
-    @JoinColumn(name = "id_provincia")  // FK
+    @JoinColumn(name = "id_provincia")
     private Provincia provincia;
 
 }

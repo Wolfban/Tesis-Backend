@@ -7,6 +7,7 @@ import lombok.Setter;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -25,8 +26,12 @@ public class PanPanaderia {
     @JoinColumn(name = "id_pan")
     private Pan pan;
 
-    private LocalDate fechaCad;
+    private LocalDateTime fechaCad;
 
     private int cant;
+
+
+    @Column(name = "ya_cad")
+    private boolean yaCad;
 
 }

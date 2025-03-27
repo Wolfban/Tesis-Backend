@@ -15,4 +15,6 @@ public class TipoPan {
     private Integer idTipoPan;
 
     private String tipo;
+    private int duracionHoras;
+
 }
