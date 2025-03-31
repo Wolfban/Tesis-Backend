@@ -4,6 +4,7 @@ import com.example.tesisbackend.entity.pan.Pan;
 import com.example.tesisbackend.entity.pan.PanPanaderia;
 import com.example.tesisbackend.entity.pan.PanPanaderiaRepository;
 import com.example.tesisbackend.entity.pan.PanRepository;
+import org.springframework.cglib.core.Local;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -36,8 +37,10 @@ public class PanPanaderiaController {
     @PostMapping
     public PanPanaderia crear(@RequestBody PanPanaderia registro) {
         Pan pan = panRepository.findById(Long.valueOf(registro.getPan().getIdPan())).orElseThrow();
-        int horas = pan.getTipoPan().getDuracionHoras();
+        int horas = pan.getDuracionHoras();
         LocalDateTime cad = LocalDateTime.now().plusHours(horas);
+        LocalDateTime fecha = LocalDateTime.now();
+        registro.setFechaReg(fecha);
         registro.setFechaCad(cad);
         
         return repository.save(registro);
@@ -50,6 +53,7 @@ public class PanPanaderiaController {
             pp.setPan(datos.getPan());
             pp.setCant(datos.getCant());
             pp.setFechaCad(datos.getFechaCad());
+            pp.setFechaCad(datos.getFechaCad());
             return repository.save(pp);
         }).orElse(null);
     }
@@ -59,13 +63,13 @@ public class PanPanaderiaController {
         repository.deleteById(id);
     }
 
-    @GetMapping("/historial/{panaderiaId}")
+    @GetMapping("/{panaderiaId}/historial")
     public List<PanPanaderia> historial(@PathVariable Long panaderiaId) {
         return repository.findHistorialByPanaderia(panaderiaId);
     }
 
 
-    @GetMapping("/caducados/{panaderiaId}")
+    @GetMapping("/{panaderiaId}/caducados")
     public List<PanPanaderia> caducados(@PathVariable Long panaderiaId) {
 
         LocalDateTime ahora = LocalDateTime.now();

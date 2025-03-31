@@ -25,7 +25,7 @@ public class CaducidadSchedule {
         }
         if (!lista.isEmpty()) {
             repository.saveAll(lista);
-            System.out.println("Marcados como caducados: " + lista.size());
+
         }
     }
 }

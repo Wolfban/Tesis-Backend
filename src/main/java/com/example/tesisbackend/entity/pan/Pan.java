@@ -15,8 +15,10 @@ public class Pan {
 
     private String nombre;
 
+    private int duracionHoras;
+
     // Relación con TipoPan
     @ManyToOne
     @JoinColumn(name = "id_tipo_pan")
-    private TipoPan tipoPan;
+    private TipoPan tipo;
 }

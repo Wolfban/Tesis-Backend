@@ -36,7 +36,7 @@ public class panController {
     public Pan actualizar(@PathVariable Long id, @RequestBody Pan datos) {
         return panRepository.findById(id).map(p -> {
             p.setNombre(datos.getNombre());
-            p.setTipoPan(datos.getTipoPan());
+            p.setTipo(datos.getTipo());
             return panRepository.save(p);
         }).orElse(null);
     }

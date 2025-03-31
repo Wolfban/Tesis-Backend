@@ -28,7 +28,6 @@ public class panaderiaController {
 
     @PostMapping
     public Panaderia crear(@RequestBody Panaderia panaderia) {
-        // panaderia.sede debe existir
         return panaderiaRepository.save(panaderia);
     }
 

@@ -1,5 +1,7 @@
 package com.example.tesisbackend.rest;
 
+import com.example.tesisbackend.entity.panaderia.Panaderia;
+import com.example.tesisbackend.entity.panaderia.PanaderiaRepository;
 import com.example.tesisbackend.entity.sedes.Sede;
 import com.example.tesisbackend.entity.sedes.SedeRepository;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +13,11 @@ import java.util.List;
 public class sedeController {
 
     private final SedeRepository sedeRepository;
+    private final PanaderiaRepository panaderiaRepository;
 
-    public sedeController(SedeRepository sedeRepository) {
+    public sedeController(SedeRepository sedeRepository, PanaderiaRepository panaderiaRepository) {
         this.sedeRepository = sedeRepository;
+        this.panaderiaRepository = panaderiaRepository;
     }
 
     @GetMapping
@@ -39,6 +43,11 @@ public class sedeController {
             s.setCanton(datos.getCanton());
             return sedeRepository.save(s);
         }).orElse(null);
+    }
+
+    @GetMapping("/{id}/panaderias")
+    public List<Panaderia> getPanaderias(@PathVariable Long id) {
+        return panaderiaRepository.findBySedeId(id);
     }
 
     @DeleteMapping("/{id}")

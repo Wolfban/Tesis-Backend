@@ -28,6 +28,8 @@ public class PanPanaderia {
 
     private LocalDateTime fechaCad;
 
+    private LocalDateTime fechaReg;
+
     private int cant;
 
 

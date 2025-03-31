@@ -11,7 +11,7 @@ public class Canton {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id_canton;
+    private Integer idCanton;
 
     private String nombre;
 
