@@ -5,6 +5,8 @@ import com.example.tesisbackend.entity.sedes.Sede;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Setter
 @Getter
@@ -21,6 +23,7 @@ public class Panaderia {
 
     @ManyToOne
     @JoinColumn(name = "id_sede")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Sede sede;
 
 }

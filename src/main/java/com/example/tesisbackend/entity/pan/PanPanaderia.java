@@ -5,6 +5,8 @@ import com.example.tesisbackend.entity.panaderia.Panaderia;
 import lombok.Getter;
 import lombok.Setter;
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -20,10 +22,12 @@ public class PanPanaderia {
 
     @ManyToOne
     @JoinColumn(name = "id_panaderia")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Panaderia panaderia;
 
     @ManyToOne
     @JoinColumn(name = "id_pan")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Pan pan;
 
     private LocalDateTime fechaCad;

@@ -3,6 +3,8 @@ import com.example.tesisbackend.entity.provincias.Provincia;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Setter
 @Getter
@@ -11,6 +13,8 @@ public class Canton {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Integer idCanton;
 
     private String nombre;
